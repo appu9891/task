@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR</title>
+    <!--include js libraries to better use-->
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+</head>
+
+<body style='margin:0;overflow:hidden'>
+    <!--every thing must be in a-scene tag-->
+    <a-scene embedded arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3; debugUIEnabled: false;">
+        <!--marker size 3*3-->
+
+        <!--include all the urls in the assets tag-->
+        <a-assets>
+            <a-assets-item id="dino" src="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"> <!--this is the website which detects the marker and put the corresponding digital image-->
+            <a-asset-item id="robo" src="https://raw.githubusercontent.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-playground/models/CesiumMan.gltf"></a-asset-item>
+            <!-- <a-asset-item id="tree" src="https://www.gstatic.com/draco/v1/decoders/path/to/tree.gltf"></a-asset-item> -->
+        </a-assets>
+
+        <a-marker type="barcode" value="2">             <!--there is sequence in the value accn to value pictures aayengi-->
+            <!--types of the marker here is barcode and value(this is serial number okk)-->
+            <!--these are the some parameters of the gltf model-->
+            <a-entity                                    
+            position="0 0 0"                      
+            scale="0.01 0.01 0.01"
+            rotation="0 0 0"
+            animation-mixer
+           gltf-model="#dino" >
+            </a-entity>
+        </a-marker>
+        <a-marker type="barcode" value="1">
+            <a-entity
+                position="0 0 0"
+                scale="1 1 1"
+                rotation="0 0 0"
+                animation-mixer
+                gltf-model="#robo"
+            ></a-entity>
+        </a-marker>
+        <!-- <a-marker type="barcode" value="1">
+        <a-entity gltf-model="#tree"></a-entity>
+        </a-marker> -->
+
+        <a-entity camera></a-entity>
+        <!--it switches on the camera-->
+    </a-scene>
+
+
+
+</body>
+
+</html>
+
+
+<!--
+    https://ar-js-org.github.io/AR.js-Docs/               use this link to do different types of the AR
+    1)what is the Augmented Reality?
+    Ans. An interactive experience of the Real world environmnet.      like putting goggle at the eyes by computerized things, lipstic at lips etc.
+                                     or
+    Augmented reality (AR) is an enhanced version of the real physical world that is achieved through the use of digital visual elements, sound, or other sensory stimuli delivered via technology   
+                        or
+    The real object enhanced by the computer generated information. like images,3D models, Audio,video etc.
+
+    2)What is the differece between the Augmented Reality And virtual Reality
+       Augmented Reality  |  virtual Reality  
+     1)some part real and |  1)entire part is virtual nothing real(like games,cartoon movies etc)
+     some part virtual    |
+    eg. snapchat,pokemonG |
+                          |
+   
+   3)types of the Augmented Realities
+       i)marker based(snampchat,emoj,ikea furniture app etc) 
+          ->we use the image recognization system to find out
+            what user wants to put on that image.
+         ->then show the appropriate digital information.
+       ii)marker less
+            ->we dont need to worry about objects or location of real World.
+            ->we just show the virtual objects and user moves it along with
+              camera.
+       iii)location-based(   my future project)
+            ->the virtual object needs to be in particular physical locations.  
+            ->we need to know the real world location of the user's device.      
+            
+            
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                               my project
+   ## marker-based AR
+      ->we will use Ar.js to create an AR webapp  using javascript.
+      ->Ar.js has inbuilt functionality to train and recognise different markers
+      ->lets see an example 
+       
+       Benefits of the Ar.js   1)it will identify the object via camera 
+                               2)it will rotate the image in 360* view.
+                               3)it is a js library, it helps to carry digital things in real world.
+                               4)AR.js is a lightweight library for Augmented Reality on the Web, coming with features like Image Tracking, Location based AR and Marker tracking.
+                               5)it runs efficiently even on mobile
+                               6)it is free of cost.
+
+-->
